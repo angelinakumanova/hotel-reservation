@@ -2,66 +2,71 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="./static/css/styles.css">
-    <title>Hotel reservation</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="./static/css/styles.css">
+  <title>Hotel reservation</title>
 </head>
 
 <body>
-    <section id="welcome">
-        <h1>&#9734; Welcome to our family hotel &#9734;</h1>
-        <div class="home-container">
-            <div class="info">
-                <h1>Hotel reservation</h1>
-            </div>
-        </div>
-    </section>
-
-    <div class="site-content">
-        <!-- Site Content -->
-        <!-- Verifier Start -->
-        <div class="confirm-reservation-content custom-form hidden">
-            <div class="background">
-                <div class="shape"></div>
-                <div class="shape"></div>
-            </div>
-            <form>
-                <h3>Confirm Reservation</h3>
-                <article class="confirm-reservation">
-                    <h4 id="guest-name">Name: Demo-User</h4>
-                    <br />
-                    <h4 id="guest-phone">Phone Number: 09939393939</h4>
-                    <br />
-                    <h4 id="guest-email">Email: demo@gmail.com</h4>
-                    <br />
-                    <h4 id="guest-room-type">Room Type: Family Room</h4>
-                    <br />
-                    <h4 id="guest-data-in">Date-in: 26-11-29</h4>
-                    <br />
-                    <h4 id="guest-data-out">Date-out: 28-11-29</h4>
-                </article>
-                <div class="buttons">
-                    <button id="confirm-back-btn">Back</button>
-                    <button id="confirm-reservation">Confirm</button>
-                </div>
-
-            </form>
-        </div>
-        <!-- Verifier End  -->
-        <!-- Thank you, page! -->
-        <div class="thank-you-content custom-form">
-            <div class="background">
-                <div class="shape"></div>
-                <div class="shape"></div>
-            </div>
-            <form class="thank-you">
-                <h3>Thank you for your reservation!</h3>
-                <button id="new-reservation">Make new reservation</button>
-            </form>
-        </div>
+  <section id="welcome">
+    <h1>&#9734; Welcome to our family hotel &#9734;</h1>
+    <div class="home-container">
+      <div class="info">
+        <h1>Hotel reservation</h1>
+      </div>
     </div>
-    <script src="solution.js"></script>
+  </section>
+
+  <div class="site-content">
+    <!-- Offerer Start -->
+    <div id="our-offers-form-content" class="content custom-form">
+      <h2>Our Offers</h2>
+      <form>
+        <label for="offerRoom">Room type:</label>
+        <input type="text" id="offerRoom" />
+
+        <label for="offerNights">Nights:</label>
+        <input type="number" id="offerNights" />
+
+        <label for="offerPrice">Price per night:</label>
+        <input type="number" id="offerPrice" />
+
+        <button type="button" id="btnOffersNext">Continue</button>
+      </form>
+    </div>
+    <!-- Offerer End -->
+
+    <!-- Verifier Start -->
+    <div class="confirm-reservation-content custom-form hidden">
+      <form>
+        <h3>Confirm Reservation</h3>
+        <article class="confirm-reservation">
+          <h4 id="guest-name">Name: Demo-User</h4>
+          <h4 id="guest-phone">Phone Number: 09939393939</h4>
+          <h4 id="guest-email">Email: demo@gmail.com</h4>
+          <h4 id="guest-room-type">Room Type: Family Room</h4>
+          <h4 id="guest-data-in">Date-in: 26-11-29</h4>
+          <h4 id="guest-data-out">Date-out: 28-11-29</h4>
+        </article>
+        <div class="buttons">
+          <button id="confirm-back-btn">Back</button>
+          <button id="confirm-reservation">Confirm</button>
+        </div>
+      </form>
+    </div>
+    <!-- Verifier End -->
+
+    <!-- Thank you, page -->
+    <div class="thank-you-content custom-form hidden">
+      <form class="thank-you">
+        <h3>Thank you for your reservation!</h3>
+        <button id="new-reservation">Make new reservation</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="solution.js"></script>
 </body>
 
 </html>
