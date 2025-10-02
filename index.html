@@ -1,43 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="stylesheet" href="./static/css/styles.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="stylesheet" href="./static/css/styles.css" />
   <title>Hotel reservation</title>
 </head>
-
 <body>
   <section id="welcome">
     <h1>&#9734; Welcome to our family hotel &#9734;</h1>
     <div class="home-container">
       <div class="info">
-        <h1>Hotel reservation</h1>
+        <h1>HOTEL RESERVATION</h1>
       </div>
     </div>
   </section>
 
   <div class="site-content">
-    <!-- Offerer Start -->
-    <div id="our-offers-form-content" class="content custom-form">
-      <h2>Our Offers</h2>
+    
+    <div class="search-result-form-content custom-form">
+      <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+      </div>
       <form>
-        <label for="offerRoom">Room type:</label>
-        <input type="text" id="offerRoom" />
-
-        <label for="offerNights">Nights:</label>
-        <input type="number" id="offerNights" />
-
-        <label for="offerPrice">Price per night:</label>
-        <input type="number" id="offerPrice" />
-
-        <button type="button" id="btnOffersNext">Continue</button>
+        <h3>Our Offers</h3>
+        <section class="offers">
+          <article class="offer-card room-type selected-room">
+            <img src="./static/img/budgetRoom.jpg" alt="budget room" />
+            <h4>Budget Room – 120 USD</h4>
+          </article>
+          <article class="offer-card room-type">
+            <img src="./static/img/familyRoom.jpg" alt="family room" />
+            <h4>Family Room – 250 USD</h4>
+          </article>
+          <article class="offer-card room-type">
+            <img src="./static/img/kingRoom.jpg" alt="king room" />
+            <h4>King Room – 500 USD</h4>
+          </article>
+        </section>
+        <div class="buttons">
+          <button id="search-back-btn">Back</button>
+          <button id="search-next-btn">Next</button>
+        </div>
       </form>
     </div>
-    <!-- Offerer End -->
 
-    <!-- Verifier Start -->
     <div class="confirm-reservation-content custom-form hidden">
       <form>
         <h3>Confirm Reservation</h3>
@@ -55,9 +63,7 @@
         </div>
       </form>
     </div>
-    <!-- Verifier End -->
 
-    <!-- Thank you, page -->
     <div class="thank-you-content custom-form hidden">
       <form class="thank-you">
         <h3>Thank you for your reservation!</h3>
@@ -68,5 +74,4 @@
 
   <script src="solution.js"></script>
 </body>
-
 </html>

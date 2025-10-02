@@ -1,4 +1,4 @@
-// Global reservation object (shared between roles)
+// Global state
 let reservation = {
   startDate: null,
   endDate: null,
@@ -9,7 +9,6 @@ let reservation = {
   email: null,
 };
 
-// Function to switch visible content
 function changeContent(className) {
   document.querySelectorAll('.custom-form')
     .forEach(div => div.classList.add('hidden'));
@@ -17,41 +16,55 @@ function changeContent(className) {
   if (target) target.classList.remove('hidden');
 }
 
-// Offerer role: handle offers form
-function showOffers() {
-  let room = document.getElementById('offerRoom').value;
-  let nights = document.getElementById('offerNights').value;
-  let price = document.getElementById('offerPrice').value;
 
-  console.log(`Room: ${room}, Nights: ${nights}, Price: ${price}`);
+document.querySelector('#search-back-btn')
+  ?.addEventListener('click', (e) => {
+    e.preventDefault();
+    changeContent('search-form-content');
+    const inEl  = document.querySelector('#check-in');
+    const outEl = document.querySelector('#check-out');
+    const pplEl = document.querySelector('#people');
+    if (inEl)  inEl.value  = reservation.startDate || '';
+    if (outEl) outEl.value = reservation.endDate   || '';
+    if (pplEl) pplEl.value = reservation.guestsCount || '';
+  });
 
-  // Temporary navigation to next form
-  changeContent('search-result-form-content');
-}
+document.querySelectorAll('.room-type').forEach(card => {
+  card.addEventListener('click', (e) => {
+    document.querySelectorAll('.room-type')
+      .forEach(x => x.classList.remove('selected-room'));
+    e.currentTarget.classList.add('selected-room');
+  });
+});
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Offerer
-  const btnOffers = document.getElementById('btnOffersNext');
-  if (btnOffers) btnOffers.addEventListener('click', showOffers);
 
-  // Verifier: back button
-  const btnBack = document.querySelector('#confirm-back-btn');
-  if (btnBack) btnBack.addEventListener('click', (e) => {
+document.querySelector('#search-next-btn')
+  ?.addEventListener('click', (e) => {
+    e.preventDefault();
+    const chosen = e.target
+      .closest('form')
+      .querySelector('.selected-room h4')
+      ?.textContent || '';
+    reservation.roomType = chosen;
+    console.log('Selected offer:', reservation.roomType);
+    changeContent('guest-details-form-content');
+  });
+
+// ----- Verifier / Thank-you wiring -----
+document.querySelector('#confirm-back-btn')
+  ?.addEventListener('click', (e) => {
     e.preventDefault();
     changeContent('guest-details-form-content');
   });
 
-  // Verifier: confirm reservation
-  const btnConfirm = document.querySelector('#confirm-reservation');
-  if (btnConfirm) btnConfirm.addEventListener('click', (e) => {
+document.querySelector('#confirm-reservation')
+  ?.addEventListener('click', (e) => {
     e.preventDefault();
     changeContent('thank-you-content');
   });
 
-  // Thank you page: new reservation
-  const btnNew = document.querySelector('#new-reservation');
-  if (btnNew) btnNew.addEventListener('click', (e) => {
+document.querySelector('#new-reservation')
+  ?.addEventListener('click', (e) => {
     e.preventDefault();
     changeContent('search-form-content');
   });
-});

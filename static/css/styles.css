@@ -2,98 +2,198 @@
 @import url('https://fonts.googleapis.com/css2?family=Alkalami&display=swap');
 
 *,
-*:before,
-*:after {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: #080710;
-  background-image: url('../img/zero.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  height: 100vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #080710;
+    background-image: url('../img/zero.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
 }
 
 #welcome {
-  background-color: #000;
+    background: #000;
 }
-#welcome > h1 {
-  text-align: center;
-  font-family: 'Passions Conflict', cursive;
-  font-size: 5rem;
-  letter-spacing: 0.1rem;
-  background: linear-gradient(
-    180deg,
-    rgba(165, 195, 250, 1) 17%,
-    rgba(188, 205, 221, 1) 48%,
-    rgba(206, 215, 200, 1) 57%,
-    rgba(246, 236, 153, 1) 69%,
-    rgba(232, 183, 105, 1) 78%
-  );
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
+
+#welcome>h1 {
+    text-align: center;
+    font-family: 'Passions Conflict', cursive;
+    font-size: 5rem;
+    letter-spacing: .1rem;
+    background: linear-gradient(180deg,
+            rgba(165, 195, 250, 1) 17%,
+            rgba(188, 205, 221, 1) 48%,
+            rgba(206, 215, 200, 1) 57%,
+            rgba(246, 236, 153, 1) 69%,
+            rgba(232, 183, 105, 1) 78%);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.info h1 {
+    color: #f2eed5;
+    text-align: center;
+    margin: 8px 0 16px;
 }
 
 .site-content {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-around;
-  height: 70%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 70vh;
+    position: relative;
 }
 
-/* Offerer styles */
-#our-offers-form-content {
-  margin: 20px auto;
-  max-width: 400px;
-  padding: 15px;
-  border: 1px solid #aaa;
-  border-radius: 5px;
-  background: rgba(255, 255, 255, 0.13);
-  color: white;
+.custom-form form {
+    height: 520px;
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.13);
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 60%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+    padding: 50px 35px;
 }
 
-#our-offers-form-content label {
-  display: block;
-  margin-top: 10px;
+.custom-form form * {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    letter-spacing: .5px;
+    outline: none;
+    border: none;
 }
 
-#our-offers-form-content input {
-  width: 100%;
-  padding: 5px;
-  margin-top: 5px;
-  border-radius: 3px;
-  border: none;
+.custom-form form h3 {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
 }
 
-#btnOffersNext {
-  margin-top: 15px;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 4px;
-  background: #4caf50;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
+.background {
+    width: 430px;
+    height: 415px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 60%;
 }
 
-#btnOffersNext:hover {
-  background: #45a049;
+.background .shape {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
 }
 
-/* Verifier / Thank you */
-.hidden { display: none; }
+.shape:first-child {
+    background: linear-gradient(#36251b, #7c4f30);
+    left: -80px;
+    top: -80px;
+}
+
+.shape:last-child {
+    background: linear-gradient(to right, #daa022, #f09819);
+    right: -30px;
+    bottom: -80px;
+}
+
+.offers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 77%;
+    gap: 14px;
+}
+
+.offer-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 9px;
+    cursor: pointer;
+    background: transparent;
+    box-shadow: 1px 1px 5px 3px #fff;
+}
+
+.offer-card:hover {
+    box-shadow: 1px 1px 18px 3px #fff;
+}
+
+.offer-card img {
+    max-width: 90px;
+    margin-right: 20px;
+}
+
+.selected-room {
+    background-color: #cfcbca !important;
+}
+
+.buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+    color: #080710;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover {
+    box-shadow: 1px 1px 11px 8px #e7a83a;
+}
+
+.hidden {
+    display: none;
+}
 
 .confirm-reservation {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
-.buttons { display: flex; gap: 12px; }
+#search-back-btn,
+#search-next-btn {
+    width: auto;
+   
+    padding: 10px 20px;
+    background: #fff;
+       color: #777;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+#search-back-btn {
+    background: #f5f3f3;
+   
+}
+
+#search-back-btn:hover {
+    background: #9ab79b;
+}
+
+#search-next-btn:hover {
+    background: #9ab79b;
+}
