@@ -134,9 +134,27 @@ body {
     box-shadow: 1px 1px 18px 3px #fff;
 }
 
-.offer-card img {
-    max-width: 90px;
-    margin-right: 20px;
+label {
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+input {
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+::placeholder {
+  color: #e5e5e5;
 }
 
 .selected-room {
@@ -197,3 +215,23 @@ button:hover {
 #search-next-btn:hover {
     background: #9ab79b;
 }
+
+.offer-card img {
+  max-width: 90px;
+  margin-right: 20px;
+}
+
+.selected-room {
+    background-color: #cfcbca;
+}
+
+.confirm-reservation {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: flex-end;
+  justify-content: center;
+}
+/* From Verifier End */
+
