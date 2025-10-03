@@ -17,38 +17,47 @@ function changeContent(className) {
 }
 
 
-document.querySelector('#search-back-btn')
-  ?.addEventListener('click', (e) => {
-    e.preventDefault();
-    changeContent('search-form-content');
-    const inEl  = document.querySelector('#check-in');
-    const outEl = document.querySelector('#check-out');
-    const pplEl = document.querySelector('#people');
-    if (inEl)  inEl.value  = reservation.startDate || '';
-    if (outEl) outEl.value = reservation.endDate   || '';
-    if (pplEl) pplEl.value = reservation.guestsCount || '';
-  });
+document.addEventListener('DOMContentLoaded', () => {
+    // Back button
+    document.querySelector('#search-back-btn')?.addEventListener('click', fillSearchForm);
 
-document.querySelectorAll('.room-type').forEach(card => {
-  card.addEventListener('click', (e) => {
-    document.querySelectorAll('.room-type')
-      .forEach(x => x.classList.remove('selected-room'));
-    e.currentTarget.classList.add('selected-room');
-  });
+    function fillSearchForm(e) {
+        e.preventDefault();
+        changeContent('search-form-content');
+        document.querySelector('#check-in').value = reservation.startDate || '';
+        document.querySelector('#check-out').value = reservation.endDate || '';
+        document.querySelector('#people').value = reservation.guestsCount || '';
+    }
+
+    // Избор на стая
+    document.querySelectorAll('.room-type').forEach(room => {
+        room.addEventListener("click", selectRoomType)
+    });
+
+    function selectRoomType(e) {
+        let myTarget;
+        e.preventDefault();
+        if (e.target.querySelector('img') != null) {
+            myTarget = e.target;
+        } else {
+            myTarget = e.target.parentElement;
+        }
+        document.querySelectorAll('.room-type').forEach(room =>
+            room.classList.remove('selected-room'));
+        myTarget.classList.add('selected-room');
+    }
+
+    // Напред бутон
+    document.querySelector('#search-next-btn')?.addEventListener('click', findRoom);
+
+    function findRoom(e) {
+        e.preventDefault();
+        const roomInfo = document.querySelector('.selected-room h4').textContent;
+        reservation.roomType = roomInfo;
+        console.log(reservation);
+        changeContent('guest-details-form-content');
+    }
 });
-
-
-document.querySelector('#search-next-btn')
-  ?.addEventListener('click', (e) => {
-    e.preventDefault();
-    const chosen = e.target
-      .closest('form')
-      .querySelector('.selected-room h4')
-      ?.textContent || '';
-    reservation.roomType = chosen;
-    console.log('Selected offer:', reservation.roomType);
-    changeContent('guest-details-form-content');
-  });
 
 // ----- Verifier / Thank-you wiring -----
 document.querySelector('#confirm-back-btn')
