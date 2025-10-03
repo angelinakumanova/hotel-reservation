@@ -1,3 +1,4 @@
+// Global state
 let reservation = {
   startDate: null,
   endDate: null,
@@ -9,12 +10,10 @@ let reservation = {
 };
 
 function changeContent(className) {
-  document
-    .querySelectorAll('.custom-form')
-    .forEach((div) => div.classList.add('hidden'));
-  if (document.querySelector(`.${className}`) != null) {
-    document.querySelector(`.${className}`).classList.remove('hidden');
-  }
+  document.querySelectorAll('.custom-form')
+    .forEach(div => div.classList.add('hidden'));
+  const target = document.querySelector(`.${className}`);
+  if (target) target.classList.remove('hidden');
 }
 
 changeContent('search-form-content');
@@ -40,25 +39,63 @@ function searchFormData(e) {
 document.querySelector('#new-reservation').addEventListener('click', (e) => cleanData(e));
 
 
-function cleanData(e) {
-  changeContent('search-form-content');
-}
-// Verifier Start
-document
-  .querySelector('#confirm-back-btn')
-  .addEventListener('click', (e) => getBackToPersonalData(e));
+document.addEventListener('DOMContentLoaded', () => {
+    // Back button
+    document.querySelector('#search-back-btn')?.addEventListener('click', fillSearchForm);
 
-function getBackToPersonalData(e) {
-  e.preventDefault();
-  changeContent('guest-details-form-content');
-}
+    function fillSearchForm(e) {
+        e.preventDefault();
+        changeContent('search-form-content');
+        document.querySelector('#check-in').value = reservation.startDate || '';
+        document.querySelector('#check-out').value = reservation.endDate || '';
+        document.querySelector('#people').value = reservation.guestsCount || '';
+    }
 
-document
-  .querySelector('#confirm-reservation')
-  .addEventListener('click', (e) => showThanksPage(e));
+    // Избор на стая
+    document.querySelectorAll('.room-type').forEach(room => {
+        room.addEventListener("click", selectRoomType)
+    });
 
-function showThanksPage(e) {
-  e.preventDefault();
-  changeContent('thank-you-content');
-}
-//Verifier End
+    function selectRoomType(e) {
+        let myTarget;
+        e.preventDefault();
+        if (e.target.querySelector('img') != null) {
+            myTarget = e.target;
+        } else {
+            myTarget = e.target.parentElement;
+        }
+        document.querySelectorAll('.room-type').forEach(room =>
+            room.classList.remove('selected-room'));
+        myTarget.classList.add('selected-room');
+    }
+
+    // Напред бутон
+    document.querySelector('#search-next-btn')?.addEventListener('click', findRoom);
+
+    function findRoom(e) {
+        e.preventDefault();
+        const roomInfo = document.querySelector('.selected-room h4').textContent;
+        reservation.roomType = roomInfo;
+        console.log(reservation);
+        changeContent('guest-details-form-content');
+    }
+});
+
+// ----- Verifier / Thank-you wiring -----
+document.querySelector('#confirm-back-btn')
+  ?.addEventListener('click', (e) => {
+    e.preventDefault();
+    changeContent('guest-details-form-content');
+  });
+
+document.querySelector('#confirm-reservation')
+  ?.addEventListener('click', (e) => {
+    e.preventDefault();
+    changeContent('thank-you-content');
+  });
+
+document.querySelector('#new-reservation')
+  ?.addEventListener('click', (e) => {
+    e.preventDefault();
+    changeContent('search-form-content');
+  });
