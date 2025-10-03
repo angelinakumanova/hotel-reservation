@@ -8,7 +8,7 @@ Exercise for "Software Engineering and DevOps" course
 • **Mariya** takes the role *"Offerer"*
 <br>
 
-•	**Solenkoff** takes the role *"Admin"*
+•	**Andjelina** takes the role *"Admin"*
 <br>
 
 •	**Vladimir** takes the role *"Verifier"*
