@@ -26,7 +26,7 @@ body {
 #welcome>h1 {
     text-align: center;
     font-family: 'Passions Conflict', cursive;
-    font-size: 5rem;
+    font-size: 5.5rem;
     letter-spacing: .1rem;
     background: linear-gradient(180deg,
             rgba(165, 195, 250, 1) 17%,
@@ -42,7 +42,17 @@ body {
 .info h1 {
     color: #f2eed5;
     text-align: center;
-    margin: 8px 0 16px;
+    font-weight: 600;
+    margin: 10px 0 40px;
+    position: relative;
+    z-index: 9999;
+
+}
+
+/* move only the inline text inside the heading downwards */
+.info h1 .info-text {
+    display: inline-block; /* allows transform */
+    transform: translateY(12px); /* move the text 12px down */
 }
 
 .site-content {
@@ -54,7 +64,7 @@ body {
 }
 
 .custom-form form {
-    height: 520px;
+    height: 500px;
     width: 400px;
     background-color: rgba(255, 255, 255, 0.13);
     position: absolute;
@@ -154,9 +164,10 @@ input {
 }
 
 ::placeholder {
-  color: #e5e5e5;
+    color: #e5e5e5;
 }
 
+/* (moved into .info h1 rule above) */
 .selected-room {
     background-color: #cfcbca !important;
 }
@@ -179,6 +190,14 @@ button {
     cursor: pointer;
 }
 
+/* target the element with the id directly (no descendant selector) */
+#new-reservation {
+    background: #fff;
+    color: #000; /* pure black */
+    font-weight: bold;
+
+}
+
 button:hover {
     box-shadow: 1px 1px 11px 8px #e7a83a;
 }
@@ -192,33 +211,28 @@ button:hover {
     flex-direction: column;
     gap: 8px;
 }
+
 #search-back-btn,
 #search-next-btn {
     width: auto;
-   
     padding: 10px 20px;
     background: #fff;
-       color: #777;
+    color: #060606;
     font-weight: bold;
     border-radius: 4px;
 }
 
-#search-back-btn {
-    background: #f5f3f3;
-   
+#search-form-button {
+    color: black;
 }
 
-#search-back-btn:hover {
-    background: #9ab79b;
-}
-
-#search-next-btn:hover {
+#search-back-btn:hover #search-next-btn:hover {
     background: #9ab79b;
 }
 
 .offer-card img {
-  max-width: 90px;
-  margin-right: 20px;
+    max-width: 90px;
+    margin-right: 20px;
 }
 
 .selected-room {
@@ -226,13 +240,14 @@ button:hover {
 }
 
 .confirm-reservation {
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  align-content: flex-end;
-  justify-content: center;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: flex-end;
+    justify-content: center;
 }
+
 /* From Verifier End */
 
 /* Admin Start */
@@ -324,7 +339,7 @@ button {
     width: 100%;
     background-color: #ffffff;
     color: #080710;
-    padding: 15px 0;
+    padding: 10px 0 10px;
     font-size: 18px;
     font-weight: 600;
     border-radius: 5px;
@@ -339,12 +354,9 @@ button:hover {
     height: 70%;
 }
 
-.buttons {
-    display: flex;
-}
-
 .buttons button {
     margin: 20px;
+    color: #060606;
 }
-/* Admin End */
 
+/* Admin End */
